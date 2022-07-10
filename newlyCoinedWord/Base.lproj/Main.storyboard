@@ -153,13 +153,13 @@
                     <connections>
                         <outlet property="answerImageView" destination="T2L-Q5-PWn" id="jHs-PU-daz"/>
                         <outlet property="answerLabel" destination="oSe-xa-POw" id="RCN-aF-Djg"/>
-                        <outlet property="hashtag2Button" destination="yXi-X9-Q3X" id="xfV-ha-N45"/>
-                        <outlet property="hashtag3Button" destination="keK-Ak-q69" id="2pv-44-Nnl"/>
-                        <outlet property="hashtag4Button" destination="v6l-y1-7L3" id="kiR-7G-XUK"/>
-                        <outlet property="hashtagButton" destination="a50-J6-fnd" id="WKR-Ny-c2A"/>
                         <outlet property="logoLabel" destination="eSS-to-BAD" id="2qD-rO-bgJ"/>
                         <outlet property="questionButton" destination="jax-Qn-RA1" id="mFA-h8-EXH"/>
                         <outlet property="questionTextField" destination="fbh-7T-yNs" id="v3G-yY-Baw"/>
+                        <outletCollection property="hashtagBugtton" destination="a50-J6-fnd" collectionClass="NSMutableArray" id="VwG-xR-Zac"/>
+                        <outletCollection property="hashtagBugtton" destination="yXi-X9-Q3X" collectionClass="NSMutableArray" id="deh-jS-PD9"/>
+                        <outletCollection property="hashtagBugtton" destination="keK-Ak-q69" collectionClass="NSMutableArray" id="cVB-zA-8o5"/>
+                        <outletCollection property="hashtagBugtton" destination="v6l-y1-7L3" collectionClass="NSMutableArray" id="ZQg-vU-RHC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

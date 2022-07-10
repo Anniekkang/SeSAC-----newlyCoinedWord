@@ -16,15 +16,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
     @IBOutlet weak var answerImageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet var hashtagBugtton : [UIButton]!
+
     
-    @IBOutlet weak var hashtagButton: UIButton!
-    @IBOutlet weak var hashtag2Button: UIButton!
-    @IBOutlet weak var hashtag3Button: UIButton!
-    @IBOutlet weak var hashtag4Button: UIButton!
+//    @IBOutlet weak var hashtagButton: UIButton!
+//    @IBOutlet weak var hashtag2Button: UIButton!
+//    @IBOutlet weak var hashtag3Button: UIButton!
+//    @IBOutlet weak var hashtag4Button: UIButton!
+    
+   
     
     
     
     let wordArray = ["애빼시", "킹받네", "갓생", "댕댕이", "쌉가능", "꾸안꾸"]
+    let content = ["애교 빼면 시체","완전 열받는다는 뜻", "신(God)처럼 멋진 삶을 의미함","강아지를 의미","완전 가능하다는 뜻", "꾸민듯 안꾸민듯 꾸밈"  ]
+    var indexNumber = Int.random(in: 0...5)
     
 
     override func viewDidLoad() {
@@ -40,7 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         questionTextField.attributedPlaceholder = NSAttributedString(string: "신조어를 입력하시오", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         
         buttonSetup()
-        hashtagButtonSetup()
+//        hashtagButtonSetup()
         labelSetup()
         
         answerImageView.backgroundColor = .purple
@@ -50,6 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //return키를 눌렀을 때 uibutton의 검색을 눌렀을 때와 같은 작용
     @objc func performAction() {
         print(1)
+        
         
               //action events
               switch  questionTextField.text{
@@ -84,19 +91,28 @@ class ViewController: UIViewController, UITextFieldDelegate {
         questionButton.setTitleColor(.white, for: .normal)
         questionButton.backgroundColor = .purple
         
-    }
-    
-    func hashtagButtonSetup(){
-        hashtagButton.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-        hashtagButton.setTitleColor(.purple, for: .normal)
-        hashtag2Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-        hashtag2Button.setTitleColor(.purple, for: .normal)
-        hashtag3Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-        hashtag3Button.setTitleColor(.purple, for: .normal)
-        hashtag4Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-        hashtag4Button.setTitleColor(.purple, for: .normal)
+        for (_, button) in hashtagBugtton.enumerated(){
+            button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
+            button.setTitleColor(.purple, for: .normal)
+            
+            
+        }
         
     }
+    
+    
+    
+//    func hashtagButtonSetup(){
+//        hashtagButton.setTitle("#\(wordArray.randomElement()!)", for: .normal)
+//        hashtagButton.setTitleColor(.purple, for: .normal)
+//        hashtag2Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
+//        hashtag2Button.setTitleColor(.purple, for: .normal)
+//        hashtag3Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
+//        hashtag3Button.setTitleColor(.purple, for: .normal)
+//        hashtag4Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
+//        hashtag4Button.setTitleColor(.purple, for: .normal)
+//
+//    }
     
     func labelSetup(){
         logoLabel.text = "무물!"
@@ -145,6 +161,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func hashtagButtonAction(_ sender: UIButton) {
+       
+        
+        
         
     }
        
