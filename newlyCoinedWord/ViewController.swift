@@ -139,7 +139,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             answerLabel.text = "다시 입력하시오"
             
         }
-        questionButton.resignFirstResponder()
+        questionTextField.resignFirstResponder()
 
     
     }
