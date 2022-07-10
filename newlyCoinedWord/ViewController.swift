@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    
+    //outlet 연결하기(Label, Button, imageView)
     @IBOutlet weak var logoLabel: UILabel!
     @IBOutlet weak var questionTextField: UITextField!
     @IBOutlet weak var questionButton: UIButton!
@@ -23,27 +23,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var hashtag4Button: UIButton!
     
     
+    
     let wordArray = ["애빼시", "킹받네", "갓생", "댕댕이", "쌉가능", "꾸안꾸"]
     
-    
-    //let randomNumber = Int.random(in: 0...5)
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         //return 버튼이 ui버튼과 같이 작용하는 코드
         questionTextField.addTarget(self, action: #selector(performAction)
         , for: UIControl.Event.primaryActionTriggered)
-        
-        //버튼을 눌렀을 때 키보드가 내려가는 코드
-        // questionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonTapped)))
-                                            
-        //리턴키를 눌렀을 때 키보드가 내려가는 코드
-        //questionTextField.delegate = self
-        self.returnhideKeyboard()
-        
-        //검색버튼을 눌렀을 때 키보드가 내려가는 코드
-        self.hideKeyboard()
         
         
         questionTextField.backgroundColor = UIColor.lightGray
@@ -55,22 +45,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         answerImageView.backgroundColor = .purple
         
-        questionButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonTapped)))
-                                            
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//         textField.resignFirstResponder()
-//        return true
-//    }
-    
-    @objc func buttonTapped(){
-      questionTextField.resignFirstResponder()
-    
-    }
-    
+    //return키를 눌렀을 때 uibutton의 검색을 눌렀을 때와 같은 작용
     @objc func performAction() {
         print(1)
+        
               //action events
               switch  questionTextField.text{
               case "꾸안꾸" :
@@ -96,24 +76,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                   answerLabel.text = "다시 입력하시오"
 
               }
-        
-        //검색버튼을 누르면 키보드가 자동으로 내려감
-            hideKeyboard()
-            returnhideKeyboard()
-
-          }
-    
-    func hideKeyboard()
-       {
-           let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-               target: self,
-               action: #selector(dismissKeyboard))
-           view.addGestureRecognizer(tap)
-       }
-       @objc func dismissKeyboard()
-       {
-           view.endEditing(true)
-       }
+    }
     
     func buttonSetup(){
         questionButton.layer.cornerRadius = 10
@@ -126,7 +89,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func hashtagButtonSetup(){
         hashtagButton.setTitle("#\(wordArray.randomElement()!)", for: .normal)
         hashtagButton.setTitleColor(.purple, for: .normal)
-        
         hashtag2Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
         hashtag2Button.setTitleColor(.purple, for: .normal)
         hashtag3Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
@@ -147,19 +109,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
     }
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//
-//            //textField code
-//
-//
-//            questionTextField.resignFirstResponder()  //if desired
-//            performAction()
-//            return true
-//        }
 
 
     @IBAction func questionbuttonTapped(_ sender: UIButton) {
         
+        print(2)
         
         switch  questionTextField.text{
         case "꾸안꾸" :
@@ -185,9 +139,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             answerLabel.text = "다시 입력하시오"
             
         }
-     
-}
+        questionButton.resignFirstResponder()
+
     
+    }
     
     @IBAction func hashtagButtonAction(_ sender: UIButton) {
         
@@ -197,11 +152,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
 
-
-}
-
-extension ViewController {
-    func returnhideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    @IBAction func textFieldAction(_ sender: Any) {
+    
+        questionTextField.resignFirstResponder()
+        
     }
+    
+    
+
+   
 }
+

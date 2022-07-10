@@ -26,6 +26,9 @@
                                         <rect key="frame" x="55" y="0.0" width="237" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldAction:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="18P-uU-lI7"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jax-Qn-RA1">
                                         <rect key="frame" x="297" y="0.0" width="67" height="30"/>
@@ -33,7 +36,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
-                                            <action selector="questionbuttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ih5-1M-3og"/>
+                                            <action selector="questionbuttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oqs-ab-upB"/>
                                         </connections>
                                     </button>
                                 </subviews>
