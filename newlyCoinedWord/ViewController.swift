@@ -21,21 +21,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var hashtagBugtton : [UIButton]!
     
     
-    @IBOutlet weak var hashtag1Button: UIButton!
-    @IBOutlet weak var hashtag2Button: UIButton!
-    @IBOutlet weak var hashtag3Button: UIButton!
-    @IBOutlet weak var hashtag4Button: UIButton!
+//    @IBOutlet weak var hashtag1Button: UIButton!
+//    @IBOutlet weak var hashtag2Button: UIButton!
+//    @IBOutlet weak var hashtag3Button: UIButton!
+//    @IBOutlet weak var hashtag4Button: UIButton!
+//
+//
     
-   
     
+    @IBOutlet var hashtagButtons : [UIButton]!
     
     
     let wordArray = ["애빼시", "킹받네", "갓생", "댕댕이", "쌉가능", "꾸안꾸"]
 //    let contents = ["애교 빼면 시체","완전 열받는다는 뜻", "신(God)처럼 멋진 삶을 의미함","강아지를 의미","완전 가능하다는 뜻", "꾸민듯 안꾸민듯 꾸밈"  ]
     
  
-    let wordDictionary : [String:String] = ["애빼시":"애교 빼면 시체", "킹받네": "완전 열받는다는 뜻","갓생":"신(God)처럼 멋진 삶을 의미함",  "댕댕이": "강아지를 의미", "쌉가능":"완전 가능하다는 뜻", "꾸안꾸":"꾸민듯 안꾸민듯 꾸밈" ]
-    
+//    let wordDictionary : [String:String] = ["애빼시":"애교 빼면 시체", "킹받네": "완전 열받는다는 뜻","갓생":"신(God)처럼 멋진 삶을 의미함",  "댕댕이": "강아지를 의미", "쌉가능":"완전 가능하다는 뜻", "꾸안꾸":"꾸민듯 안꾸민듯 꾸밈" ]
+//
     var searchWord : [String] = []
 
         
@@ -101,10 +103,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         questionTextField.resignFirstResponder()
 
-        hashtag1Button.setTitle(searchWord[1], for: .normal)
-        hashtag2Button.setTitle(searchWord[2], for: .normal)
-        hashtag3Button.setTitle(searchWord[3], for: .normal)
-        hashtag4Button.setTitle(searchWord[4], for: .normal)
+        
         }
 
               
@@ -116,12 +115,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         questionButton.setTitleColor(.white, for: .normal)
         questionButton.backgroundColor = .purple
         
-        hashtag1Button.setTitle("", for: .normal)
-        hashtag2Button.setTitle("", for: .normal)
-        hashtag3Button.setTitle("", for: .normal)
-        hashtag4Button.setTitle("", for: .normal)
-        
-      
+        for count in 0...3 {
+                hashtagButtons[count].setTitle("", for: .normal)
+        }
         
         
         
@@ -139,55 +135,77 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
 
-
+   
     @IBAction func questionbuttonTapped(_ sender: UIButton) {
-       
+        var count = 0
         switch  questionTextField.text{
         case "꾸안꾸" :
 
             answerLabel.text = "꾸민듯 안꾸민듯 꾸밈"
             searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
+            searchWord.remove(at: 0)
+            count += 1
             
-
+           
         case "갓생" :
             answerLabel.text = "신(God)처럼 멋진 삶을 의미함"
             searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
+            searchWord.remove(at: 0)
+            count += 1
 
+           
         case "쌉가능" :
             answerLabel.text = "완전 가능하다는 뜻"
             searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
+            searchWord.remove(at: 0)
+            count += 1
+
+          
 
         case "댕댕이" :
             answerLabel.text = "강아지를 의미"
             searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
+            searchWord.remove(at: 0)
+            count += 1
 
+            
         case "애빼시" :
             answerLabel.text = "애교 빼면 시체"
             searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
+            searchWord.remove(at: 0)
+            count += 1
+
+           
 
         case "킹받다" :
             answerLabel.text = "완전 열받는다는 뜻"
             searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
+            searchWord.remove(at: 0)
+            count += 1
+
 
         default :
             answerLabel.text = "다시 입력하시오"
 
         }
         questionTextField.resignFirstResponder()
-
-        for i in 0...searchWord.count - 1 {
-        hashtag1Button.setTitle(searchWord[i], for: .normal)
-        hashtag2Button.setTitle(searchWord[i], for: .normal)
-        hashtag3Button.setTitle(searchWord[i], for: .normal)
-        hashtag4Button.setTitle(searchWord[i], for: .normal)
-        
-        }
-    
+       
     }
+       
+        
+}
+    
+    
     
     
 
-}
+
 
        
   
