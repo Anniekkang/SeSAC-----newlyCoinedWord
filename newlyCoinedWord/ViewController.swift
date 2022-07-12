@@ -5,6 +5,8 @@
 //  Created by 나리강 on 2022/07/09.
 //
 
+//스위치, 함수리턴, 열거형 이용해서 고치기
+
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -17,22 +19,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var answerImageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet var hashtagBugtton : [UIButton]!
-
     
-//    @IBOutlet weak var hashtagButton: UIButton!
-//    @IBOutlet weak var hashtag2Button: UIButton!
-//    @IBOutlet weak var hashtag3Button: UIButton!
-//    @IBOutlet weak var hashtag4Button: UIButton!
+    
+    @IBOutlet weak var hashtag1Button: UIButton!
+    @IBOutlet weak var hashtag2Button: UIButton!
+    @IBOutlet weak var hashtag3Button: UIButton!
+    @IBOutlet weak var hashtag4Button: UIButton!
     
    
     
     
     
     let wordArray = ["애빼시", "킹받네", "갓생", "댕댕이", "쌉가능", "꾸안꾸"]
-    let content = ["애교 빼면 시체","완전 열받는다는 뜻", "신(God)처럼 멋진 삶을 의미함","강아지를 의미","완전 가능하다는 뜻", "꾸민듯 안꾸민듯 꾸밈"  ]
-    var indexNumber = Int.random(in: 0...5)
+//    let contents = ["애교 빼면 시체","완전 열받는다는 뜻", "신(God)처럼 멋진 삶을 의미함","강아지를 의미","완전 가능하다는 뜻", "꾸민듯 안꾸민듯 꾸밈"  ]
     
+ 
+    let wordDictionary : [String:String] = ["애빼시":"애교 빼면 시체", "킹받네": "완전 열받는다는 뜻","갓생":"신(God)처럼 멋진 삶을 의미함",  "댕댕이": "강아지를 의미", "쌉가능":"완전 가능하다는 뜻", "꾸안꾸":"꾸민듯 안꾸민듯 꾸밈" ]
+    
+    var searchWord : [String] = []
 
+        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +57,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelSetup()
         
         answerImageView.backgroundColor = .purple
+       
+    
+    
         
     }
     
@@ -57,33 +67,48 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func performAction() {
         print(1)
         
-        
-              //action events
-              switch  questionTextField.text{
-              case "꾸안꾸" :
+ 
+        switch  questionTextField.text{
+        case "꾸안꾸" :
 
-                  answerLabel.text = "꾸민듯 안꾸민듯 꾸밈"
+            answerLabel.text = "꾸민듯 안꾸민듯 꾸밈"
+            searchWord.append(questionTextField.text!)
+            
 
-              case "갓생" :
-                  answerLabel.text = "신(God)처럼 멋진 삶을 의미함"
+        case "갓생" :
+            answerLabel.text = "신(God)처럼 멋진 삶을 의미함"
+            searchWord.append(questionTextField.text!)
 
-              case "쌉가능" :
-                  answerLabel.text = "완전 가능하다는 뜻"
+        case "쌉가능" :
+            answerLabel.text = "완전 가능하다는 뜻"
+            searchWord.append(questionTextField.text!)
 
-              case "댕댕이" :
-                  answerLabel.text = "강아지를 의미"
+        case "댕댕이" :
+            answerLabel.text = "강아지를 의미"
+            searchWord.append(questionTextField.text!)
 
-              case "애빼시" :
-                  answerLabel.text = "애교 빼면 시체"
+        case "애빼시" :
+            answerLabel.text = "애교 빼면 시체"
+            searchWord.append(questionTextField.text!)
 
-              case "킹받다" :
-                  answerLabel.text = "완전 열받는다는 뜻"
+        case "킹받다" :
+            answerLabel.text = "완전 열받는다는 뜻"
+            searchWord.append(questionTextField.text!)
 
-              default :
-                  answerLabel.text = "다시 입력하시오"
+        default :
+            answerLabel.text = "다시 입력하시오"
 
-              }
-    }
+        }
+        questionTextField.resignFirstResponder()
+
+        hashtag1Button.setTitle(searchWord[1], for: .normal)
+        hashtag2Button.setTitle(searchWord[2], for: .normal)
+        hashtag3Button.setTitle(searchWord[3], for: .normal)
+        hashtag4Button.setTitle(searchWord[4], for: .normal)
+        }
+
+              
+    
     
     func buttonSetup(){
         questionButton.layer.cornerRadius = 10
@@ -91,28 +116,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         questionButton.setTitleColor(.white, for: .normal)
         questionButton.backgroundColor = .purple
         
-        for (_, button) in hashtagBugtton.enumerated(){
-            button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-            button.setTitleColor(.purple, for: .normal)
-            
-            
-        }
+        hashtag1Button.setTitle("", for: .normal)
+        hashtag2Button.setTitle("", for: .normal)
+        hashtag3Button.setTitle("", for: .normal)
+        hashtag4Button.setTitle("", for: .normal)
+        
+      
+        
+        
         
     }
-    
-    
-    
-//    func hashtagButtonSetup(){
-//        hashtagButton.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-//        hashtagButton.setTitleColor(.purple, for: .normal)
-//        hashtag2Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-//        hashtag2Button.setTitleColor(.purple, for: .normal)
-//        hashtag3Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-//        hashtag3Button.setTitleColor(.purple, for: .normal)
-//        hashtag4Button.setTitle("#\(wordArray.randomElement()!)", for: .normal)
-//        hashtag4Button.setTitleColor(.purple, for: .normal)
-//
-//    }
     
     func labelSetup(){
         logoLabel.text = "무물!"
@@ -128,57 +141,60 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func questionbuttonTapped(_ sender: UIButton) {
-        
-        print(2)
-        
+       
         switch  questionTextField.text{
         case "꾸안꾸" :
 
             answerLabel.text = "꾸민듯 안꾸민듯 꾸밈"
+            searchWord.append(questionTextField.text!)
+            
 
         case "갓생" :
             answerLabel.text = "신(God)처럼 멋진 삶을 의미함"
+            searchWord.append(questionTextField.text!)
 
         case "쌉가능" :
             answerLabel.text = "완전 가능하다는 뜻"
+            searchWord.append(questionTextField.text!)
 
         case "댕댕이" :
             answerLabel.text = "강아지를 의미"
+            searchWord.append(questionTextField.text!)
 
         case "애빼시" :
             answerLabel.text = "애교 빼면 시체"
+            searchWord.append(questionTextField.text!)
 
         case "킹받다" :
             answerLabel.text = "완전 열받는다는 뜻"
+            searchWord.append(questionTextField.text!)
 
         default :
             answerLabel.text = "다시 입력하시오"
-            
+
         }
         questionTextField.resignFirstResponder()
 
+        for i in 0...searchWord.count - 1 {
+        hashtag1Button.setTitle(searchWord[i], for: .normal)
+        hashtag2Button.setTitle(searchWord[i], for: .normal)
+        hashtag3Button.setTitle(searchWord[i], for: .normal)
+        hashtag4Button.setTitle(searchWord[i], for: .normal)
+        
+        }
     
-    }
-    
-    @IBAction func hashtagButtonAction(_ sender: UIButton) {
-       
-        
-        
-        
-    }
-       
-    @IBAction func tapgestureClicked(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-
-    @IBAction func textFieldAction(_ sender: Any) {
-    
-        questionTextField.resignFirstResponder()
-        
     }
     
     
 
-   
 }
+
+       
+  
+ 
+
+
+
+
+
 
