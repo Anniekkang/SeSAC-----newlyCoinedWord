@@ -18,8 +18,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
     @IBOutlet weak var answerImageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
-    @IBOutlet var hashtagBugtton : [UIButton]!
+   
     
+    var count = 0
     
 //    @IBOutlet weak var hashtag1Button: UIButton!
 //    @IBOutlet weak var hashtag2Button: UIButton!
@@ -147,109 +148,41 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
    
     @IBAction func questionbuttonTapped(_ sender: UIButton) {
-        var count = 0
+        
+        func appendHashtag(){
+            searchWord.append(questionTextField.text!)
+            hashtagButtons[count].setTitle("#\(searchWord[count])", for: .normal)
+            print(count)
+        }
         
         switch questionTextField.text {
         case "애빼시" :
             answerLabel.text! = NewlyCoinedWord.애빼시.rawValue
-            
+            appendHashtag()
         case "갓생" :
             answerLabel.text! = NewlyCoinedWord.갓생.rawValue
+            appendHashtag()
         case "꾸안꾸" :
             answerLabel.text! = NewlyCoinedWord.꾸안꾸.rawValue
+            appendHashtag()
         case "댕댕이" :
             answerLabel.text! = NewlyCoinedWord.댕댕이.rawValue
+            appendHashtag()
         case "쌉가능" :
             answerLabel.text! = NewlyCoinedWord.쌉가능.rawValue
+            appendHashtag()
         case "킹받네" :
             answerLabel.text! = NewlyCoinedWord.킹받네.rawValue
+            appendHashtag()
         default :
             answerLabel.text! = "다시 입력하시오"
-            
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        var count = 0
-//        switch  questionTextField.text{
-//        case "꾸안꾸" :
-//
-//            answerLabel.text = "꾸민듯 안꾸민듯 꾸밈"
-//            searchWord.append(questionTextField.text!)
-//            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
-//            searchWord.remove(at: 0)
-//            count += 1
-//
-//
-//        case "갓생" :
-//            answerLabel.text = "신(God)처럼 멋진 삶을 의미함"
-//            searchWord.append(questionTextField.text!)
-//            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
-//            searchWord.remove(at: 0)
-//            count += 1
-//
-//
-//        case "쌉가능" :
-//            answerLabel.text = "완전 가능하다는 뜻"
-//            searchWord.append(questionTextField.text!)
-//            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
-//            searchWord.remove(at: 0)
-//            count += 1
-//
-//
-//
-//        case "댕댕이" :
-//            answerLabel.text = "강아지를 의미"
-//            searchWord.append(questionTextField.text!)
-//            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
-//            searchWord.remove(at: 0)
-//            count += 1
-//
-//
-//        case "애빼시" :
-//            answerLabel.text = "애교 빼면 시체"
-//            searchWord.append(questionTextField.text!)
-//            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
-//            searchWord.remove(at: 0)
-//            count += 1
-//
-//
-//
-//        case "킹받다" :
-//            answerLabel.text = "완전 열받는다는 뜻"
-//            searchWord.append(questionTextField.text!)
-//            hashtagButtons[count].setTitle(searchWord[count], for: .normal)
-//            searchWord.remove(at: 0)
-//            count += 1
-//
-//
-//        default :
-//            answerLabel.text = "다시 입력하시오"
-//
-//        }
-//        questionTextField.resignFirstResponder()
-//
-//    }
-//
-        
-}
+        }
+        count += 1
+    }
     
-
-
-}
+    
+    
+    
     
 }
